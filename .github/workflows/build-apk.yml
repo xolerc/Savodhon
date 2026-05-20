@@ -39,7 +39,7 @@ jobs:
       - name: Build APK
         run: |
           cd android
-          gradle assembleDebug --no-daemon
+          gradle assembleRelease --no-daemon
 
       - name: Copy APK
         run: |
