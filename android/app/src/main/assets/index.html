@@ -26,10 +26,19 @@
         }
 
         :root {
-            --bg: #080808;
-            --bg-secondary: #111111;
-            --surface: rgba(25, 25, 30, 0.85);
+            --bg-dark: #010103;
+            --bg-secondary: #020214;
+            --neon-blue: #0303C5;
+            --neon-glow: rgba(3, 3, 197, 0.3);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --neon-success: #2ed573;
+            --neon-warning: #ffa502;
+            --bg: #010103;
             --glass: rgba(255, 255, 255, 0.02);
+            --surface: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.06);
             --accent: #ffffff;
             --accent-light: #e0e0e0;
@@ -38,9 +47,9 @@
             --accent3: #22c55e;
             --accent4: #eab308;
             --text: #ffffff;
-            --text-dim: #888888;
+            --text-dim: rgba(255, 255, 255, 0.6);
             --gold: #eab308;
-            --success: #22c55e;
+            --success: #2ed573;
             --danger: #ef4444;
             --radius-sm: 12px;
             --radius-md: 20px;
@@ -52,50 +61,200 @@
             --layer-focus: 200;
             --layer-modal: 300;
         }
-        [data-theme="light"] {
-            --bg: #f8fafc;
-            --surface: rgba(255,255,255,0.9);
-            --glass: rgba(0,0,0,0.03);
-            --border: rgba(0,0,0,0.1);
-            --text: #0f172a;
-            --text-dim: #64748b;
-            --accent: #6366f1;
-            --accent-glow: rgba(99,102,241,0.25);
-        }
-        [data-theme="neon"] {
-            --bg: #0a0a1a;
-            --surface: rgba(20,0,40,0.7);
-            --glass: rgba(0,255,255,0.03);
-            --border: rgba(0,255,255,0.15);
-            --accent: #00ffff;
-            --accent-light: #66ffff;
-            --accent-glow: rgba(0,255,255,0.5);
-            --accent2: #ff00ff;
-            --accent3: #00ff80;
-            --text: #e0ffff;
-            --text-dim: #4a6a7a;
-            --gold: #ffd700;
-        }
-        [data-theme="ocean"] {
-            --bg: #0a1628;
-            --surface: rgba(10,30,60,0.7);
-            --glass: rgba(100,200,255,0.03);
-            --border: rgba(100,200,255,0.1);
-            --accent: #38bdf8;
-            --accent-light: #7dd3fc;
-            --accent-glow: rgba(56,189,248,0.4);
-            --accent2: #22d3ee;
-            --accent3: #2dd4bf;
-            --text: #e0f2fe;
-            --text-dim: #5a7a9a;
-            --gold: #fbbf24;
-        }
 
         body {
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100dvh;
+            min-height: 100vh;
+            background: radial-gradient(circle at bottom, rgba(3,3,197,0.3) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #010103 40%, #020214 100%);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+        }
+
+        .x-page {
+            min-height: 100vh;
+            background: radial-gradient(circle at bottom, rgba(3,3,197,0.3) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #010103 40%, #020214 100%);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .x-btn-primary {
+            position: relative;
+            width: 100%;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            outline: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 12px 35px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .x-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.25), 0 18px 45px rgba(0,0,0,0.5), 0 0 30px rgba(3,3,197,0.5);
+        }
+        .x-btn-primary:active { transform: scale(0.97); }
+
+        .x-btn-secondary {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 10px 16px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .x-btn-secondary:hover { color: white; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); }
+
+        .x-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 20px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .x-input-field {
+            width: 100%;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--glass-border);
+            padding: 16px 20px;
+            border-radius: 16px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .x-input-field:focus {
+            border-color: rgba(3, 3, 197, 0.6);
+            box-shadow: 0 0 15px rgba(3, 3, 197, 0.2);
+        }
+
+        .x-mode-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .x-mode-card:hover {
+            border-color: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-3px);
+        }
+        .x-mode-card .icon-box {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .x-mode-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .x-mode-card p { font-size: 11px; color: var(--text-secondary); line-height: 1.3; }
+
+        .x-alpha-tile {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            backdrop-filter: blur(8px);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .x-alpha-tile:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        .x-alpha-tile .letter { font-size: 22px; font-weight: 800; color: #fff; }
+        .x-alpha-tile .progress-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.2); border-radius: 50%; margin-top: 6px; }
+        .x-alpha-tile .progress-text { font-size: 10px; color: var(--neon-warning); font-weight: 700; margin-top: 4px; }
+        .x-alpha-tile.active-progress {
+            background: rgba(3, 3, 197, 0.08);
+            border-color: rgba(3, 3, 197, 0.4);
+            box-shadow: inset 0 0 10px rgba(3, 3, 197, 0.2), 0 0 15px rgba(3, 3, 197, 0.15);
+        }
+        .x-alpha-tile.completed-progress {
+            background: rgba(46, 213, 115, 0.05);
+            border-color: rgba(46, 213, 115, 0.3);
+            box-shadow: 0 0 15px rgba(46, 213, 115, 0.1);
+        }
+        .x-alpha-tile .badge { position: absolute; top: 6px; right: 8px; font-size: 9px; color: var(--neon-success); font-weight: 900; }
+
+        .x-progress-container { width: 40%; height: 8px; background: rgba(255,255,255,0.05); border-radius: 999px; overflow: hidden; border: 1px solid var(--glass-border); }
+        .x-progress-bar { height: 100%; background: linear-gradient(90deg, #03036A, #0303C5); box-shadow: 0 0 10px var(--neon-glow); border-radius: 999px; }
+        .x-timer-badge { background: rgba(255,255,255,0.04); padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; border: 1px solid var(--glass-border); }
+        .task-char {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            width: 50px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .task-char.primary-neon {
+            background: rgba(3, 3, 197, 0.15);
+            border-color: rgba(3, 3, 197, 0.5);
+            box-shadow: 0 0 15px rgba(3, 3, 197, 0.3);
+        }
+        .game-input-wrapper { border-radius: 20px; padding: 2px; transition: all 0.3s; }
+        .game-input-wrapper.success-neon-glow {
+            background: linear-gradient(180deg, rgba(46, 213, 115, 0.4), transparent);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3), 0 0 20px rgba(46, 213, 115, 0.2);
+        }
+        .game-display-input {
+            width: 100%;
+            background: #020214;
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            border-radius: 18px;
+            padding: 18px;
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-align: center;
+            outline: none;
+        }
+        .success-popup-card {
+            margin-top: auto;
+            background: var(--glass-bg);
+            border: 1px solid rgba(46, 213, 115, 0.3);
+            border-radius: 24px;
+            padding: 20px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(46, 213, 115, 0.1);
         }
 
         .screen {
@@ -107,12 +266,10 @@
         /* ==================== WELCOME SCREEN ==================== */
         #welcomeScreen {
             z-index: var(--layer-welcome);
-            background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 30%, var(--bg) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 24px;
         }
 
         #welcomeScreen::before {
@@ -130,94 +287,9 @@
             transform: scale(1.1);
         }
 
-        .welcome-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-        .welcome-icon {
-            font-size: 5rem;
-            margin-bottom: 16px;
-            animation: float 3s ease-in-out infinite;
-        }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
-        }
-        .welcome-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-        .welcome-subtitle {
-            color: var(--text-dim);
-            font-size: 1rem;
-        }
-
-        .stats-preview {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 48px;
-        }
-        .stat-item {
-            text-align: center;
-            padding: 16px 24px;
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-        }
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--gold);
-        }
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .input-card {
-            width: 100%;
-            max-width: 400px;
-            background: var(--surface);
-            border-radius: var(--radius-xl);
-            padding: 32px;
-            border: 1px solid var(--border);
-        }
-        .input-label {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 12px;
-            display: block;
-        }
-        .input-field {
-            width: 100%;
-            background: rgba(0,0,0,0.4);
-            border: 2px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 18px;
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .input-field:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow);
-            outline: none;
-        }
-
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
         }
         .btn {
             padding: 18px 24px;
@@ -229,20 +301,14 @@
             transition: all 0.2s;
         }
         .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+            background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+            backdrop-filter: blur(20px);
             color: #fff;
-            box-shadow: 0 8px 30px var(--accent-glow);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 12px 35px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .btn-primary:active {
             transform: scale(0.97);
-        }
-        .btn-secondary {
-            background: var(--glass);
-            color: var(--text-dim);
-            border: 1px solid var(--border);
-        }
-        .btn-secondary:active {
-            background: rgba(255,255,255,0.08);
         }
 
         /* ==================== MAIN APP ==================== */
@@ -279,9 +345,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(11,11,15,0.9);
+            background: rgba(1,1,3,0.9);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--glass-border);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -366,8 +432,9 @@
         /* Daily Goal */
         .daily-goal {
             padding: 16px 20px;
-            background: var(--surface);
-            border-bottom: 1px solid var(--border);
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
         }
         .goal-header {
             display: flex;
@@ -378,20 +445,22 @@
         .goal-title {
             font-weight: 700;
             font-size: 0.9rem;
+            color: var(--text-primary);
         }
         .goal-count {
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
         }
         .goal-bar {
             height: 8px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             border-radius: 8px;
             overflow: hidden;
         }
         .goal-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--accent2) 0%, var(--accent4) 50%, var(--accent3) 100%);
+            background: linear-gradient(90deg, #03036A, #0303C5);
+            box-shadow: 0 0 10px var(--neon-glow);
             border-radius: 8px;
             transition: width 0.5s ease;
         }
@@ -401,24 +470,24 @@
             gap: 12px;
             margin-top: 12px;
             padding-top: 12px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--glass-border);
         }
         .time-tracker {
             flex: 1;
             padding: 10px 12px;
             border-radius: var(--radius-md);
-            background: var(--glass);
-            border: 1px solid var(--border);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
         }
         .time-tracker.daily {
-            border-left: 3px solid var(--accent2);
+            border-left: 3px solid var(--neon-blue);
         }
         .time-tracker.weekly {
-            border-left: 3px solid var(--accent4);
+            border-left: 3px solid var(--neon-warning);
         }
         .tracker-label {
             font-size: 0.7rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -426,23 +495,23 @@
             display: block;
             font-size: 1rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--text-primary);
             margin: 4px 0;
         }
         .tracker-bar {
             height: 3px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             border-radius: 3px;
             overflow: hidden;
         }
         .tracker-fill {
             height: 100%;
-            background: var(--accent2);
+            background: var(--neon-blue);
             border-radius: 3px;
             transition: width 0.3s;
         }
         .tracker-fill.weekly-fill {
-            background: var(--accent4);
+            background: var(--neon-warning);
         }
 
         /* Main Content */
@@ -461,50 +530,55 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: var(--text-primary);
         }
         .section-badge {
             font-size: 0.75rem;
-            background: var(--accent);
+            background: rgba(3,3,197,0.3);
             padding: 4px 10px;
             border-radius: 20px;
             font-weight: 600;
+            border: 1px solid rgba(3,3,197,0.5);
+            color: #fff;
         }
 
         /* Daily Challenge */
         .daily-challenge {
-            background: linear-gradient(145deg, rgba(239,68,68,0.05), rgba(234,179,8,0.05), rgba(34,197,94,0.05));
-            border: 1px solid rgba(234,179,8,0.2);
-            border-left: 3px solid var(--accent4);
+            background: linear-gradient(135deg, rgba(255,165,0,0.1), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,165,0,0.2);
+            border-left: 3px solid var(--neon-warning);
             border-radius: var(--radius-lg);
             padding: 18px 20px;
             margin-bottom: 20px;
             cursor: pointer;
+            backdrop-filter: blur(12px);
             transition: 0.3s;
         }
         .daily-challenge:active { transform: scale(0.98); }
         .challenge-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
         .challenge-icon { font-size: 1.3rem; }
-        .challenge-title { font-weight: 800; font-size: 1rem; flex: 1; }
+        .challenge-title { font-weight: 800; font-size: 1rem; flex: 1; color: var(--text-primary); }
         .challenge-badge {
-            background: var(--gold); color: #000; padding: 3px 10px;
+            background: var(--neon-warning); color: #000; padding: 3px 10px;
             border-radius: 20px; font-size: 0.7rem; font-weight: 700;
         }
-        .challenge-badge.done { background: var(--success); }
+        .challenge-badge.done { background: var(--neon-success); color: #fff; }
         .challenge-body { display: flex; justify-content: space-between; align-items: center; }
-        .challenge-reward { background: rgba(245,158,11,0.15); color: var(--gold); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
-        .challenge-status { margin-top: 8px; font-size: 0.85rem; color: var(--text-dim); }
+        .challenge-reward { background: rgba(255,165,0,0.15); color: var(--neon-warning); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; }
+        .challenge-status { margin-top: 8px; font-size: 0.85rem; color: var(--text-secondary); }
 
         /* Stats Charts */
         .chart-container {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
             padding: 20px;
             margin-bottom: 20px;
             overflow: hidden;
+            backdrop-filter: blur(12px);
         }
         .chart-container svg { width: 100%; height: auto; }
-        .chart-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 12px; color: var(--text-dim); }
+        .chart-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 12px; color: var(--text-secondary); }
 
         /* Level Info Modal */
         .modal-overlay {
@@ -522,38 +596,41 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent2), var(--accent4), var(--accent3));
+            background: linear-gradient(90deg, var(--accent2), var(--accent4), var(--neon-success));
         }
         .modal-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
             padding: 32px;
             max-width: 400px;
             width: 100%;
             max-height: 80vh;
             overflow-y: auto;
+            backdrop-filter: blur(16px);
         }
-        .modal-card h2 { font-size: 1.5rem; margin-bottom: 16px; }
+        .modal-card h2 { font-size: 1.5rem; margin-bottom: 16px; color: var(--text-primary); }
         .modal-close {
-            background: var(--glass);
-            border: 1px solid var(--border);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 10px 24px;
             font-weight: 700;
             cursor: pointer;
             width: 100%;
             margin-top: 16px;
+            color: var(--text-primary);
         }
         .level-list { display: flex; flex-direction: column; gap: 8px; }
         .level-row {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 16px; background: var(--glass);
+            padding: 10px 16px; background: var(--glass-bg);
             border-radius: var(--radius-md);
+            border: 1px solid var(--glass-border);
         }
-        .level-row.current { border: 1px solid var(--accent); }
-        .level-rank { font-weight: 700; font-size: 0.85rem; }
-        .level-range { font-size: 0.8rem; color: var(--text-dim); }
+        .level-row.current { border: 1px solid var(--neon-blue); box-shadow: 0 0 15px var(--neon-glow); }
+        .level-rank { font-weight: 700; font-size: 0.85rem; color: var(--text-primary); }
+        .level-range { font-size: 0.8rem; color: var(--text-secondary); }
 
         /* Learning Modes Grid */
         .modes-grid {
@@ -563,38 +640,35 @@
             margin-bottom: 32px;
         }
         .mode-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             padding: 24px 20px;
-            border-radius: var(--radius-lg);
+            backdrop-filter: blur(12px);
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid var(--border);
             position: relative;
             overflow: hidden;
         }
         .mode-card:active {
             transform: scale(0.97);
         }
-        .mode-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.05) 100%);
+        .mode-card:hover {
+            border-color: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-3px);
         }
         .mode-card.letters {
-            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
-            border-left: 3px solid var(--accent);
+            border-left: 3px solid var(--neon-blue);
         }
         .mode-card.global {
-            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
-            border-left: 3px solid var(--accent3);
+            border-left: 3px solid var(--neon-success);
         }
         .mode-card.weak {
-            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
             border-left: 3px solid var(--accent2);
         }
         .mode-card.review {
-            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
-            border-left: 3px solid var(--accent4);
+            border-left: 3px solid var(--neon-warning);
         }
         .mode-icon {
             font-size: 2.5rem;
@@ -604,10 +678,11 @@
             font-weight: 800;
             font-size: 1.1rem;
             margin-bottom: 4px;
+            color: var(--text-primary);
         }
         .mode-desc {
             font-size: 0.8rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
             margin-bottom: 12px;
         }
         .mode-progress {
@@ -621,7 +696,7 @@
             background: rgba(255,255,255,0.2);
         }
         .progress-dot.filled {
-            background: var(--accent);
+            background: var(--neon-blue);
         }
         .progress-dot.gold {
             background: var(--gold);
@@ -636,15 +711,16 @@
         }
         .letter-tile {
             aspect-ratio: 1;
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-size: 1.6rem;
             font-weight: 800;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(8px);
             cursor: pointer;
             transition: all 0.2s;
             position: relative;
@@ -653,12 +729,14 @@
             transform: scale(0.93);
         }
         .letter-tile.mastered {
-            background: linear-gradient(145deg, #1a3a2a 0%, #0f2a1f 100%);
-            border-color: var(--accent3);
+            background: rgba(46,213,115,0.05);
+            border-color: rgba(46,213,115,0.3);
+            box-shadow: 0 0 15px rgba(46,213,115,0.1);
         }
         .letter-tile.in-progress {
-            background: linear-gradient(145deg, #1a1a4b 0%, #0f0f2a 100%);
-            border-color: var(--accent);
+            background: rgba(3,3,197,0.08);
+            border-color: rgba(3,3,197,0.4);
+            box-shadow: inset 0 0 10px rgba(3,3,197,0.2), 0 0 15px rgba(3,3,197,0.15);
         }
         .letter-tile.new {
             border-style: dashed;
@@ -678,7 +756,7 @@
             position: absolute;
             bottom: 6px;
             font-size: 0.6rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
         }
 
         /* Statistics */
@@ -689,20 +767,21 @@
             margin-bottom: 32px;
         }
         .stat-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             padding: 16px;
             text-align: center;
+            backdrop-filter: blur(8px);
         }
         .stat-card-value {
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--accent-light);
+            color: var(--text-primary);
         }
         .stat-card-label {
             font-size: 0.7rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -718,14 +797,16 @@
         .achievement-card {
             min-width: 100px;
             padding: 16px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
             text-align: center;
+            backdrop-filter: blur(8px);
         }
         .achievement-card.unlocked {
-            border-color: var(--gold);
-            background: linear-gradient(145deg, rgba(245,158,11,0.1) 0%, transparent 100%);
+            border-color: var(--neon-warning);
+            background: rgba(255,165,0,0.08);
+            box-shadow: 0 0 15px rgba(255,165,0,0.1);
         }
         .achievement-icon {
             font-size: 2rem;
@@ -734,12 +815,13 @@
         .achievement-name {
             font-size: 0.75rem;
             font-weight: 600;
+            color: var(--text-primary);
         }
 
         /* ==================== FOCUS LEARNING SCREEN ==================== */
         #focusScreen {
             z-index: var(--layer-focus);
-            background: var(--bg);
+            background: radial-gradient(circle at bottom, rgba(3,3,197,0.3) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #010103 40%, #020214 100%);
             display: flex;
             flex-direction: column;
             opacity: 0;
@@ -757,7 +839,7 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: linear-gradient(180deg, var(--accent), var(--accent3), var(--accent4), var(--accent2));
+            background: linear-gradient(180deg, #0303C5, var(--neon-success), var(--neon-warning), var(--accent2));
         }
 
         .focus-header {
@@ -765,10 +847,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(1,1,3,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
         }
         .focus-nav-btn {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 10px 18px;
             font-weight: 600;
@@ -778,23 +863,27 @@
             gap: 6px;
             transition: 0.2s;
             flex-shrink: 0;
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
         }
+        .focus-nav-btn:hover { color: white; border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.02); }
         .timer-btn { font-size: 0.85rem; padding: 10px 14px; }
-        .timer-btn.active { border-color: var(--gold); background: rgba(245,158,11,0.15); }
+        .timer-btn.active { border-color: var(--neon-warning); background: rgba(255,165,0,0.15); }
         .focus-progress {
             flex: 1;
             margin: 0 16px;
         }
         .progress-track {
             height: 6px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             border-radius: 6px;
             overflow: hidden;
             margin-bottom: 6px;
         }
         .progress-thumb {
             height: 100%;
-            background: var(--accent);
+            background: linear-gradient(90deg, #03036A, #0303C5);
+            box-shadow: 0 0 10px var(--neon-glow);
             border-radius: 6px;
             transition: width 0.3s;
         }
@@ -802,7 +891,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
         }
 
         .focus-body {
@@ -821,8 +910,9 @@
         }
         .lesson-label {
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
             margin-bottom: 8px;
+            letter-spacing: 1px;
         }
         .current-word {
             font-size: clamp(3rem, 12vw, 5rem);
@@ -835,19 +925,19 @@
             transition: all 0.2s;
         }
         .syllable.vowel {
-            color: var(--text);
+            color: var(--text-primary);
         }
         .syllable.consonant {
             color: var(--accent-light);
         }
         .syllable.active {
-            background: var(--accent);
-            color: #fff;
+            background: var(--text-primary);
+            color: #000;
             border-radius: 8px;
             transform: scale(1.1);
         }
         .syllable.correct {
-            background: var(--accent3);
+            background: var(--neon-success);
             color: #fff;
         }
         .syllable.wrong {
@@ -856,8 +946,8 @@
         }
 
         .hint-btn {
-            background: var(--glass);
-            border: 1px solid var(--border);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
             border-radius: 30px;
             padding: 12px 20px;
             font-weight: 600;
@@ -866,6 +956,8 @@
             align-items: center;
             gap: 8px;
             margin-top: 16px;
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
         }
 
         /* Input Area */
@@ -875,9 +967,9 @@
         }
         .mirror-input {
             min-height: 90px;
-            background: rgba(0,0,0,0.5);
-            border: 3px solid var(--border);
-            border-radius: var(--radius-lg);
+            background: rgba(2,2,20,0.8);
+            border: 3px solid var(--glass-border);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -888,12 +980,12 @@
             position: relative;
         }
         .mirror-input:focus-within {
-            border-color: var(--accent);
-            box-shadow: 0 0 40px var(--accent-glow);
+            border-color: rgba(3,3,197,0.6);
+            box-shadow: 0 0 30px rgba(3,3,197,0.3);
         }
         .mirror-input.correct {
-            border-color: var(--success);
-            box-shadow: 0 0 40px rgba(34,197,94,0.4);
+            border-color: var(--neon-success);
+            box-shadow: 0 0 40px rgba(46,213,115,0.4), 0 0 80px rgba(46,213,115,0.1);
         }
         .mirror-input.wrong {
             border-color: var(--danger);
@@ -903,9 +995,10 @@
             display: inline-block;
             width: 4px;
             height: 3rem;
-            background: var(--accent);
+            background: var(--neon-blue);
             animation: blink 1s infinite;
             border-radius: 4px;
+            box-shadow: 0 0 10px var(--neon-glow);
         }
 
         /* Hidden real input */
@@ -933,19 +1026,20 @@
             transform: translateY(0);
         }
         .feedback-message.success {
-            color: var(--success);
+            color: var(--neon-success);
         }
         .feedback-message.error {
             color: var(--danger);
         }
         .xp-popup {
             display: inline-block;
-            background: var(--gold);
-            color: #000;
+            background: rgba(46,213,115,0.2);
+            color: #fff;
             padding: 8px 16px;
             border-radius: 20px;
             font-weight: 800;
             margin-top: 8px;
+            border: 1px solid rgba(46,213,115,0.3);
             animation: popIn 0.4s ease;
         }
         @keyframes popIn {
@@ -962,17 +1056,18 @@
         .next-button {
             width: 100%;
             padding: 20px;
-            border-radius: var(--radius-lg);
+            border-radius: 20px;
             font-size: 1.2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+            background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
             color: #fff;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.1);
             cursor: pointer;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s;
-            box-shadow: 0 10px 40px var(--accent-glow);
+            backdrop-filter: blur(20px);
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 12px 35px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
         }
         .next-button.visible {
             opacity: 1;
@@ -988,22 +1083,23 @@
             width: 100%; max-width: 450px;
             margin-top: 16px;
             padding: 8px 14px;
-            background: var(--surface);
+            background: var(--glass-bg);
             border-radius: 30px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--glass-border);
         }
         .timer-progress-track {
             flex: 1; height: 6px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             border-radius: 6px; overflow: hidden;
         }
         .timer-progress-fill {
             height: 100%; width: 0%;
-            background: var(--gold);
+            background: linear-gradient(90deg, #03036A, #0303C5);
+            box-shadow: 0 0 10px var(--neon-glow);
             border-radius: 6px;
             transition: width 1s linear;
         }
-        .timer-label { font-size: 0.85rem; font-weight: 700; color: var(--gold); min-width: 45px; text-align: right; }
+        .timer-label { font-size: 0.85rem; font-weight: 700; color: var(--neon-warning); min-width: 45px; text-align: right; }
 
         /* Skip animation */
         .word-appear {
@@ -1035,7 +1131,7 @@
             position: fixed;
             inset: 0;
             z-index: 9999;
-            background: rgba(0,0,0,0.95);
+            background: radial-gradient(circle at bottom, rgba(3,3,197,0.3) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #010103 40%, #020214 100%);
             backdrop-filter: blur(40px);
             display: none;
             flex-direction: column;
@@ -1048,7 +1144,7 @@
         /* ==================== ALPHABET SCREEN ==================== */
         #alphabetScreen {
             z-index: var(--layer-main);
-            background: var(--bg);
+            background: radial-gradient(circle at bottom, rgba(3,3,197,0.3) 0%, transparent 60%), linear-gradient(180deg, #000000 0%, #010103 40%, #020214 100%);
             display: flex;
             flex-direction: column;
             opacity: 0;
@@ -1067,17 +1163,16 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 15% 85%, rgba(239, 68, 68, 0.04) 0%, transparent 20%),
-                radial-gradient(circle at 85% 15%, rgba(34, 197, 94, 0.04) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(234, 179, 8, 0.03) 0%, transparent 30%);
+                radial-gradient(circle at 15% 85%, rgba(3,3,197,0.08) 0%, transparent 20%),
+                radial-gradient(circle at 85% 15%, rgba(46,213,115,0.08) 0%, transparent 20%);
             pointer-events: none;
         }
 
         .alphabet-header {
             padding: env(safe-area-inset-top, 16px) 20px 16px;
-            background: rgba(8, 8, 8, 0.95);
+            background: rgba(1,1,3,0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--glass-border);
             position: sticky;
             top: 0;
             z-index: 50;
@@ -1087,10 +1182,11 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 4px;
+            color: var(--text-primary);
         }
         .alphabet-subtitle {
             font-size: 0.85rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
             text-align: center;
         }
 
@@ -1105,7 +1201,7 @@
         }
         .category-title {
             font-size: 0.8rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 12px;
@@ -1118,15 +1214,16 @@
         }
         .letter-btn {
             aspect-ratio: 1;
-            border-radius: var(--radius-md);
+            border-radius: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             font-weight: 800;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(8px);
             cursor: pointer;
             transition: all 0.2s;
             position: relative;
@@ -1134,13 +1231,20 @@
         .letter-btn:active {
             transform: scale(0.95);
         }
+        .letter-btn:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
         .letter-btn.mastered {
-            background: linear-gradient(145deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05));
-            border-color: var(--accent3);
+            background: rgba(46,213,115,0.05);
+            border-color: rgba(46,213,115,0.3);
+            box-shadow: 0 0 15px rgba(46,213,115,0.1);
         }
         .letter-btn.in-progress {
-            background: linear-gradient(145deg, rgba(234,179,8,0.1), rgba(234,179,8,0.03));
-            border-color: var(--accent4);
+            background: rgba(3,3,197,0.08);
+            border-color: rgba(3,3,197,0.4);
+            box-shadow: inset 0 0 10px rgba(3,3,197,0.2), 0 0 15px rgba(3,3,197,0.15);
         }
         .letter-btn.new {
             border-style: dashed;
@@ -1152,9 +1256,9 @@
             font-size: 0.6rem;
             font-weight: 600;
         }
-        .letter-btn.mastered .letter-progress { color: var(--accent3); }
-        .letter-btn.in-progress .letter-progress { color: var(--accent4); }
-        .letter-btn.new .letter-progress { color: var(--text-dim); }
+        .letter-btn.mastered .letter-progress { color: var(--neon-success); }
+        .letter-btn.in-progress .letter-progress { color: var(--neon-warning); }
+        .letter-btn.new .letter-progress { color: var(--text-secondary); }
         .letter-btn .master-icon {
             position: absolute;
             top: -3px;
@@ -1170,9 +1274,10 @@
         }
         .quick-start-btn {
             padding: 16px;
-            border-radius: var(--radius-md);
-            background: var(--surface);
-            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(8px);
             cursor: pointer;
             transition: all 0.2s;
             text-align: left;
@@ -1188,17 +1293,20 @@
             font-weight: 700;
             font-size: 0.95rem;
             margin-bottom: 2px;
+            color: var(--text-primary);
         }
         .quick-start-btn .qs-desc {
             font-size: 0.75rem;
-            color: var(--text-dim);
+            color: var(--text-secondary);
         }
         .quick-start-btn.start-all {
             grid-column: span 2;
-            background: linear-gradient(135deg, var(--accent2), var(--accent4));
-            border: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
             text-align: center;
             padding: 20px;
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 12px 35px rgba(0,0,0,0.4), 0 0 20px var(--neon-glow);
         }
         .quick-start-btn.start-all .qs-title {
             color: #fff;
@@ -1221,40 +1329,41 @@
     <div id="guardOverlay">
         <div style="font-size: 5rem; margin-bottom: 20px;">🔒</div>
         <h2 style="font-size: 2rem; margin-bottom: 12px;">To'liq Ekran Rejimi</h2>
-        <p style="color: var(--text-dim); margin-bottom: 40px;">Dastur to'liq ekranda ishlashni talab qiladi.</p>
-        <button class="btn btn-primary" onclick="requestFullscreen()" style="padding: 18px 40px;">DAVOM ETISH</button>
+        <p style="color: var(--text-secondary); margin-bottom: 40px;">Dastur to'liq ekranda ishlashni talab qiladi.</p>
+        <button class="x-btn-primary" onclick="requestFullscreen()" style="padding: 18px 40px; width: auto; min-width: 200px;">DAVOM ETISH</button>
     </div>
 
     <!-- WELCOME SCREEN -->
-    <div id="welcomeScreen" class="screen">
-        <div class="welcome-header">
-            <div class="welcome-icon">📚</div>
-            <h1 class="welcome-title">XOLƎRIƆ</h1>
-            <p class="welcome-subtitle">So'z Ustasi - O'zbek tilini o'rganing</p>
+    <div id="welcomeScreen" class="screen x-page" style="justify-content: center;">
+        <div class="brand-section" style="text-align: center; margin-bottom: 40px;">
+            <div style="font-size: 5rem; margin-bottom: 16px; animation: float 3s ease-in-out infinite;">📚</div>
+            <h1 style="font-size: 32px; font-weight: 800; letter-spacing: 3px; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">XOLƎRIƆ</h1>
+            <p style="color: var(--text-secondary); margin-top: 5px;">So'z Ustasi — O'zbek tilini o'rganing</p>
         </div>
 
-        <div class="stats-preview" id="statsPreview" style="display: none;">
-            <div class="stat-item">
-                <div class="stat-value" id="statWords">0</div>
-                <div class="stat-label">So'z</div>
+        <div class="x-card" id="statsPreview" style="display: none; justify-content: space-around; text-align: center; flex-direction: row;">
+            <div>
+                <div style="font-size: 24px; font-weight: 800; color: #fff;" id="statWords">0</div>
+                <div style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">SO'Z</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-value" id="statDays">0</div>
-                <div class="stat-label">Kun</div>
+            <div style="width: 1px; background: var(--glass-border);"></div>
+            <div>
+                <div style="font-size: 24px; font-weight: 800; color: var(--neon-warning);" id="statDays">0</div>
+                <div style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">KUN</div>
             </div>
-            <div class="stat-item">
-                <div class="stat-value" id="statXP">0</div>
-                <div class="stat-label">XP</div>
+            <div style="width: 1px; background: var(--glass-border);"></div>
+            <div>
+                <div style="font-size: 24px; font-weight: 800; color: #00d2d3;" id="statXP">0</div>
+                <div style="font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">XP</div>
             </div>
         </div>
 
-        <div class="input-card">
-            <label class="input-label">Ismingizni kiriting</label>
-            <input type="text" id="nameInput" class="input-field" placeholder="Ism" autocomplete="off">
-            <div class="btn-group">
-                <button class="btn btn-primary" id="startBtn">Boshlash</button>
-                <button class="btn btn-secondary" id="continueBtn">Davom etish →</button>
+        <div class="x-card" style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="position: relative;">
+                <input type="text" id="nameInput" class="x-input-field" placeholder="Ismingizni kiriting..." autocomplete="off">
             </div>
+            <button class="x-btn-primary" id="startBtn">Boshlash <span style="font-size: 18px;">➔</span></button>
+            <button class="x-btn-secondary" id="continueBtn" style="width:100%;padding:18px;">Davom etish →</button>
         </div>
     </div>
 
@@ -1327,28 +1436,28 @@
             </h2>
             <div class="modes-grid">
                 <div class="mode-card letters" onclick="startMode('letters')">
-                    <div class="mode-icon">🔤</div>
-                    <div class="mode-title">Harflar</div>
-                    <div class="mode-desc">Har bir harfni alohida o'rganing</div>
-                    <div class="mode-progress" id="lettersProgress"></div>
+                    <div class="icon-box" style="background: rgba(3,3,197,0.2); color: #54a0ff;">🔤</div>
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Harflar</h3>
+                    <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.3;">Har bir harfni alohida o'rganing</p>
+                    <div class="mode-progress" id="lettersProgress" style="margin-top:12px;"></div>
                 </div>
                 <div class="mode-card global" onclick="startMode('global')">
-                    <div class="mode-icon">🌍</div>
-                    <div class="mode-title">Global</div>
-                    <div class="mode-desc">Barcha harflardan tartib bilan</div>
-                    <div class="mode-progress" id="globalProgress"></div>
+                    <div class="icon-box" style="background: rgba(46, 213, 115, 0.15); color: var(--neon-success);">🌍</div>
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Global</h3>
+                    <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.3;">Barcha harflardan tartib bilan</p>
+                    <div class="mode-progress" id="globalProgress" style="margin-top:12px;"></div>
                 </div>
                 <div class="mode-card weak" onclick="startMode('weak')">
-                    <div class="mode-icon">⚠️</div>
-                    <div class="mode-title">Qiyin</div>
-                    <div class="mode-desc">Xatolarga yo'l qo'ygan so'zlar</div>
-                    <div class="mode-progress" id="weakProgress"></div>
+                    <div class="icon-box" style="background: rgba(255, 71, 87, 0.15); color: #ff4757;">⚠️</div>
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Qiyin</h3>
+                    <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.3;">Xatolarga yo'l qo'yilgan so'zlar</p>
+                    <div class="mode-progress" id="weakProgress" style="margin-top:12px;"></div>
                 </div>
                 <div class="mode-card review" onclick="startMode('review')">
-                    <div class="mode-icon">🔄</div>
-                    <div class="mode-title">Takrorlash</div>
-                    <div class="mode-desc">O'tilganlarni takrorlash</div>
-                    <div class="mode-progress" id="reviewProgress"></div>
+                    <div class="icon-box" style="background: rgba(255, 165, 0, 0.15); color: var(--neon-warning);">🔄</div>
+                    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 4px;">Takrorlash</h3>
+                    <p style="font-size: 11px; color: var(--text-secondary); line-height: 1.3;">O'tilganlarni SRS bilan takrorlash</p>
+                    <div class="mode-progress" id="reviewProgress" style="margin-top:12px;"></div>
                 </div>
             </div>
 
@@ -1381,15 +1490,15 @@
                 <svg id="weeklyChart" viewBox="0 0 300 100" preserveAspectRatio="xMidYMid meet"></svg>
             </div>
 
-            <button class="btn btn-primary" onclick="showAlphabetScreen()" style="width:100%;margin-top:16px;padding:16px;border-radius:var(--radius-md);margin-bottom:24px">
-                🔤 Barcha harflar (Alfavit) → 
+            <button class="x-btn-primary" onclick="showAlphabetScreen()" style="width:100%;margin-top:16px;margin-bottom:24px">
+                🔤 Barcha harflar (Alfavit) →
             </button>
 
-            <div class="download-apk-section" style="text-align:center;margin-top:32px;padding:24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg)">
+            <div class="x-card" style="text-align:center;">
                 <div style="font-size:2rem;margin-bottom:8px">📲</div>
-                <div style="font-weight:700;margin-bottom:4px">Android ilovasini yuklab oling</div>
-                <div style="font-size:0.8rem;color:var(--text-dim);margin-bottom:12px">To'liq offline, tez va qulay</div>
-                <a href="download.html" style="display:inline-block;padding:12px 32px;border-radius:30px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;text-decoration:none;font-size:0.95rem">📲 APK yuklab olish</a>
+                <div style="font-weight:700;margin-bottom:4px;color:var(--text-primary)">Android ilovasini yuklab oling</div>
+                <div style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:12px">To'liq offline, tez va qulay</div>
+                <a href="download.html" style="display:inline-block;padding:12px 32px;border-radius:30px;font-weight:700;background:linear-gradient(180deg,rgba(255,255,255,0.15),rgba(255,255,255,0.03));backdrop-filter:blur(20px);color:#fff;text-decoration:none;font-size:0.95rem;border:1px solid rgba(255,255,255,0.1);box-shadow:inset 0 1px 1px rgba(255,255,255,0.2), 0 8px 25px rgba(0,0,0,0.4), 0 0 15px var(--neon-glow)">📲 APK yuklab olish</a>
             </div>
         </div>
     </div>
@@ -1397,7 +1506,7 @@
     <!-- ALPHABET SCREEN -->
     <div id="alphabetScreen" class="screen">
         <div class="alphabet-header">
-            <button class="focus-nav-btn" onclick="exitAlphabetScreen()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%)">
+            <button class="x-btn-secondary" onclick="exitAlphabetScreen()" style="position:absolute;left:16px;top:50%;transform:translateY(-50%)">
                 ← Orqaga
             </button>
             <div class="alphabet-title">🔤 Alfavit</div>
@@ -1473,9 +1582,11 @@
             </div>
 
             <div class="input-container">
-                <div class="mirror-input" id="mirrorInput">
-                    <span id="mirrorText"></span>
-                    <span class="cursor-blink" id="cursor"></span>
+                <div class="game-input-wrapper" id="gameInputWrapper">
+                    <div class="mirror-input" id="mirrorInput">
+                        <span id="mirrorText"></span>
+                        <span class="cursor-blink" id="cursor"></span>
+                    </div>
                 </div>
             </div>
             <input type="text" id="hiddenInput" autocomplete="off" spellcheck="false">
@@ -1491,9 +1602,22 @@
                 <span class="timer-label" id="timerLabel">25:00</span>
             </div>
 
-            <div class="feedback-area">
+            <div class="feedback-area" id="feedbackArea">
                 <div class="feedback-message" id="feedbackMsg"></div>
                 <div class="xp-popup" id="xpPopup" style="display: none;">+10 XP</div>
+            </div>
+
+            <div class="success-popup-card" id="successCard" style="display:none; width:100%;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 22px;">🎉</span>
+                        <div>
+                            <h4 style="color: var(--neon-success); font-weight: 800; font-size: 18px; margin:0;">Ajoyib!</h4>
+                            <p style="font-size: 12px; color: var(--text-secondary); margin:0;">Topshiriq muvaffaqiyatli bajarildi</p>
+                        </div>
+                    </div>
+                    <div style="background: rgba(46, 213, 115, 0.2); color: #fff; padding: 6px 12px; border-radius: 999px; font-weight: 800; font-size: 13px; border: 1px solid rgba(46, 213, 115, 0.3);">+10 XP</div>
+                </div>
             </div>
         </div>
 
@@ -2590,11 +2714,15 @@
             dom.hiddenInput.value = '';
             dom.mirrorText.textContent = '';
             dom.mirrorInput.classList.remove('correct', 'wrong');
+            const wrapper = document.getElementById('gameInputWrapper');
+            if (wrapper) wrapper.classList.remove('success-neon-glow');
             dom.cursor.style.display = 'inline-block';
             dom.feedbackMsg.classList.remove('show', 'success', 'error');
             dom.xpPopup.style.display = 'none';
             dom.nextBtn.classList.remove('visible');
             dom.hintCount.textContent = `(${hintsRemaining})`;
+            const successCard = document.getElementById('successCard');
+            if (successCard) successCard.style.display = 'none';
             
             updateFocusProgress();
         }
@@ -2708,6 +2836,8 @@
             vibrate(50);
             
             dom.mirrorInput.classList.add('correct');
+            const wrapper = document.getElementById('gameInputWrapper');
+            if (wrapper) wrapper.classList.add('success-neon-glow');
             dom.cursor.style.display = 'none';
             dom.feedbackMsg.textContent = 'Ajoyib! 🎉';
             dom.feedbackMsg.classList.add('show', 'success');
@@ -2715,6 +2845,8 @@
             setTimeout(() => { dom.xpPopup.style.display = 'none'; }, 2000);
             dom.nextBtn.classList.add('visible');
             dom.hiddenInput.blur();
+            const successCard = document.getElementById('successCard');
+            if (successCard) successCard.style.display = 'block';
             
             document.querySelectorAll('.syllable').forEach(s => s.classList.add('correct'));
             
@@ -2781,6 +2913,8 @@
                 }
                 window._dailyChallengeWord = null;
                 dom.xpPopup.textContent = '+50 XP 🎯';
+                const sucXp = document.querySelector('#successCard div:first-child > div:last-child');
+                if (sucXp) sucXp.textContent = '+50 XP 🎯';
             }
 
             state.weakWords = state.weakWords.filter(w => w.word !== currentWordData.word);
