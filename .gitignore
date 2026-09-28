@@ -4,3 +4,7 @@ android/local.properties
 *.idsig
 *.keystore
 .astra/
+flutter/build/
+flutter/.dart_tool/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies

@@ -1,0 +1,72 @@
+name: Flutter APK
+
+on:
+  push:
+    tags: [ 'v4*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Set up Flutter 3.47.5
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.47.5'
+          cache: true
+
+      - name: Pub get
+        run: flutter pub get
+        working-directory: flutter
+
+      - name: Analyze
+        run: flutter analyze
+        working-directory: flutter
+
+      - name: Test
+        run: flutter test
+        working-directory: flutter
+
+      - name: Build APK
+        run: flutter build apk --release
+        working-directory: flutter
+
+      - name: Copy APK
+        run: |
+          mkdir -p apk
+          cp flutter/build/app/outputs/flutter-apk/app-release.apk apk/Savodhon-flutter.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Savodhon-Flutter-APK
+          path: apk/Savodhon-flutter.apk
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            --title "Savodhon Flutter ${{ github.ref_name }}" \
+            --notes-file /dev/stdin \
+            apk/Savodhon-flutter.apk <<'NOTES'
+          Savodhon — So'z Ustasi (NATIVE Flutter)
+
+          ## Tarkib
+          - 28 harf (2026 alifbo), 1008 so'z, EN tarjima
+          - TTS, mikrofon, SM-2, artikulatsiya, statistika
+          - Neon-golden premium dizayn
+          NOTES
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
