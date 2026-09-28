@@ -3,3 +3,4 @@ android/.gradle/
 android/local.properties
 *.idsig
 *.keystore
+.astra/

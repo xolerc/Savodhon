@@ -3,273 +3,353 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XOLERIC - APK yuklab olish</title>
-  <meta name="theme-color" content="#0b0b0f">
-  <meta name="description" content="XOLERIC - O'zbek tili o'rganish ilovasi. Android APK va PWA versiyalarini yuklab oling.">
+  <title>Savodhon — So'z Ustasi | APK yuklab olish</title>
+  <meta name="theme-color" content="#050508">
+  <meta name="description" content="Savodhon — So'z Ustasi. O'zbek tilini bo'g'inlab o'rganing: 28 harf, 1000+ so'z, gamification va offline PWA. APK ni yuklab oling.">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    :root {
+      --bg: #050508;
+      --bg-2: #0a0a12;
+      --card: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --gold: #eab308;
+      --gold-soft: #facc15;
+      --gold-glow: rgba(234, 179, 8, 0.35);
+      --text: #ffffff;
+      --dim: rgba(255, 255, 255, 0.62);
+      --faint: rgba(255, 255, 255, 0.4);
+      --radius: 28px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+    html { scroll-behavior: smooth; }
     body {
-      background: #0b0b0f;
-      color: #fff;
       min-height: 100dvh;
-      background-image: radial-gradient(ellipse at 50% 0%, #1e1b4b 0%, #0b0b0f 60%);
+      background:
+        radial-gradient(900px 420px at 50% -80px, rgba(234, 179, 8, 0.10), transparent 60%),
+        radial-gradient(700px 500px at 85% 30%, rgba(60, 60, 120, 0.12), transparent 60%),
+        radial-gradient(700px 500px at 10% 60%, rgba(60, 60, 120, 0.08), transparent 60%),
+        linear-gradient(180deg, #050508 0%, #07070d 50%, #050508 100%);
+      color: var(--text);
+      -webkit-tap-highlight-color: transparent;
     }
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    .header { text-align: center; margin-bottom: 48px; }
-    .logo {
-      font-size: 3.5rem; font-weight: 900; letter-spacing: -3px;
-      background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
+    .top-line { height: 3px; background: linear-gradient(90deg, #7c2d12, var(--gold), #fef08a, var(--gold), #7c2d12); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 64px; }
+
+    /* NAV */
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+    .brand-mark {
+      width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1.4rem; color: var(--gold);
+      background: linear-gradient(145deg, #101018, #0a0a12);
+      border: 1px solid rgba(234, 179, 8, 0.45);
+      box-shadow: 0 0 24px rgba(234, 179, 8, 0.18), inset 0 1px 0 rgba(255,255,255,0.12);
     }
-    .subtitle { color: #6b7280; font-size: 1.1rem; }
-    
+    .brand-name { font-weight: 800; letter-spacing: 2px; font-size: 1.05rem; }
+    .brand-sub { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.4px; }
+    .nav-links { display: flex; gap: 10px; align-items: center; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px; border-radius: 999px; text-decoration: none;
+      color: #fff; font-weight: 600; font-size: 0.9rem;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      backdrop-filter: blur(12px); transition: 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); }
+
+    /* HERO */
+    .hero {
+      margin-top: 22px;
+      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: stretch;
+    }
     .hero-card {
-      background: linear-gradient(145deg, rgba(30,27,75,0.5), rgba(15,15,35,0.5));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 32px;
-      padding: 48px 40px;
-      text-align: center;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.015));
+      border: 1px solid rgba(234, 179, 8, 0.22);
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(234,179,8,0.07), inset 0 1px 0 rgba(255,255,255,0.1);
     }
     .hero-card::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%; width: 200%; height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(99,102,241,0.05), transparent, rgba(236,72,153,0.05), transparent);
-      animation: rotate 10s linear infinite;
+      content: ''; position: absolute; inset: -60% -20%;
+      background: conic-gradient(from 0deg, transparent 0deg, rgba(234,179,8,0.06) 40deg, transparent 90deg, transparent 180deg, rgba(234,179,8,0.05) 220deg, transparent 270deg);
+      animation: spin 14s linear infinite; pointer-events: none;
     }
-    @keyframes rotate { 100% { transform: rotate(360deg); } }
-    .hero-content { position: relative; z-index: 1; }
-    .hero-icon { font-size: 4rem; margin-bottom: 16px; }
-    .hero-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
-    .hero-desc { color: #9ca3af; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    
-    .download-btn-main {
-      display: inline-flex;
-      align-items: center; gap: 12px;
-      padding: 20px 48px;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      color: #fff;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 8px 40px rgba(99,102,241,0.4);
+    .hero-card::after {
+      content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(234,179,8,0.6), transparent);
     }
-    .download-btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 50px rgba(99,102,241,0.5); }
-    .download-btn-main:active { transform: scale(0.97); }
-    .file-info { margin-top: 12px; font-size: 0.85rem; color: #6b7280; }
-    
-    .pwa-section {
-      text-align: center;
-      padding: 24px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 24px;
-      margin-bottom: 32px;
-    }
-    .pwa-section p { color: #9ca3af; font-size: 0.9rem; margin-bottom: 12px; }
-    .pwa-btn {
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-inner { position: relative; z-index: 1; }
+    .pill {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; border-radius: 30px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--gold-soft); background: rgba(234,179,8,0.09);
+      border: 1px solid rgba(234,179,8,0.3); padding: 8px 16px; border-radius: 999px; margin-bottom: 18px;
     }
-    .pwa-btn:hover { background: rgba(255,255,255,0.1); }
+    .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); font-weight: 900; line-height: 1.08; letter-spacing: -1px; margin-bottom: 14px; }
+    h1 .gold { background: linear-gradient(120deg, #fef08a, var(--gold) 55%, #b45309); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .lede { color: var(--dim); font-size: 1.02rem; line-height: 1.65; max-width: 52ch; margin-bottom: 26px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 40px; border-radius: 999px; text-decoration: none;
+      font-size: 1.05rem; font-weight: 800; color: #1a1205;
+      background: linear-gradient(135deg, #fef08a 0%, var(--gold) 45%, #ca8a04 100%);
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow: 0 10px 40px var(--gold-glow), 0 0 0 6px rgba(234,179,8,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+      transition: 0.25s;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 16px 55px rgba(234,179,8,0.5), 0 0 0 8px rgba(234,179,8,0.1), inset 0 1px 0 rgba(255,255,255,0.6); }
+    .btn-gold:active { transform: scale(0.97); }
+    .file-meta { margin-top: 14px; font-size: 0.82rem; color: var(--faint); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .file-meta .sep { opacity: 0.4; }
+    .trust { display: flex; gap: 18px; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .trust-item { display: flex; gap: 10px; align-items: center; font-size: 0.85rem; color: var(--dim); }
+    .trust-item b { color: #fff; }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+    /* PHONE MOCK (sof CSS, rasmsiz) */
+    .mock-side { display: flex; align-items: center; justify-content: center; }
+    .phone {
+      width: min(300px, 78vw); border-radius: 46px; padding: 12px;
+      background: linear-gradient(160deg, #1b1b26, #08080e);
+      border: 1px solid rgba(234,179,8,0.35);
+      box-shadow: 0 40px 90px rgba(0,0,0,0.6), 0 0 70px rgba(234,179,8,0.12);
+      position: relative;
     }
-    .feature-card {
-      background: rgba(20,20,30,0.5);
+    .phone::before {
+      content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+      width: 110px; height: 26px; background: #050508; border-radius: 999px; z-index: 2;
       border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 24px;
-      text-align: center;
     }
-    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
-    .feature-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-    .feature-desc { font-size: 0.8rem; color: #6b7280; }
+    .phone-screen {
+      border-radius: 36px; overflow: hidden; background: #07070d;
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 44px 16px 18px; min-height: 520px;
+      display: flex; flex-direction: column; gap: 12px;
+      background-image: radial-gradient(300px 200px at 50% 0%, rgba(234,179,8,0.14), transparent 65%);
+    }
+    .mock-top { display: flex; justify-content: space-between; align-items: center; }
+    .mock-streak { background: linear-gradient(135deg, #ef4444, var(--gold)); font-size: 0.7rem; font-weight: 800; padding: 6px 12px; border-radius: 999px; }
+    .mock-xp { font-size: 0.7rem; font-weight: 700; background: rgba(255,255,255,0.06); border: 1px solid var(--border); padding: 6px 12px; border-radius: 999px; }
+    .mock-word {
+      text-align: center; font-size: 2rem; font-weight: 900; letter-spacing: 5px;
+      padding: 26px 10px; border-radius: 20px;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+    }
+    .mock-word span { background: var(--gold); color: #000; border-radius: 8px; padding: 0 4px; }
+    .mock-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .mock-tiles i {
+      aspect-ratio: 1; border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-style: normal; font-weight: 800; font-size: 1.05rem;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+    }
+    .mock-tiles i.on { border-color: rgba(234,179,8,0.6); box-shadow: 0 0 14px rgba(234,179,8,0.25); color: var(--gold-soft); }
+    .mock-tiles i.ok { border-color: rgba(46,213,115,0.5); color: #2ed573; }
+    .mock-btn {
+      margin-top: auto; text-align: center; font-weight: 800; padding: 16px; border-radius: 18px;
+      background: linear-gradient(135deg, #fef08a, var(--gold), #ca8a04); color: #1a1205;
+      box-shadow: 0 8px 30px rgba(234,179,8,0.35);
+    }
+    .mock-bar { height: 6px; border-radius: 99px; background: rgba(255,255,255,0.07); overflow: hidden; }
+    .mock-bar em { display: block; height: 100%; width: 68%; background: linear-gradient(90deg, #b45309, var(--gold)); border-radius: 99px; }
 
-    .steps {
-      background: rgba(20,20,30,0.5);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 24px;
-      padding: 32px;
-      margin-bottom: 32px;
+    /* STATS */
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px;
     }
-    .steps h2 { font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-    .step-item {
-      display: flex; gap: 16px;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .stat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 22px;
+      padding: 20px; text-align: center; backdrop-filter: blur(14px);
     }
-    .step-item:last-child { border-bottom: none; }
-    .step-num {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
-    }
-    .step-text { font-size: 0.9rem; color: #d1d5db; line-height: 1.5; }
-    .step-text strong { color: #fff; }
+    .stat b { display: block; font-size: 1.5rem; font-weight: 900; color: var(--gold-soft); }
+    .stat span { font-size: 0.72rem; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
 
-    .version-info {
-      display: flex; justify-content: center; gap: 32px;
-      padding: 20px;
-      background: rgba(16,185,129,0.05);
-      border: 1px solid rgba(16,185,129,0.15);
-      border-radius: 20px;
-      margin-bottom: 32px;
-      flex-wrap: wrap;
+    /* FEATURES */
+    .section-head { margin: 52px 0 20px; display: flex; align-items: end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .section-head h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.3px; }
+    .section-head p { color: var(--dim); font-size: 0.9rem; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .feat {
+      background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+      border: 1px solid var(--border); border-radius: 24px; padding: 26px 22px;
+      backdrop-filter: blur(14px); transition: 0.25s;
+      border-top: 2px solid rgba(234,179,8,0.35);
     }
-    .version-item { text-align: center; }
-    .version-label { font-size: 0.75rem; color: #6b7280; text-transform: uppercase; letter-spacing: 1px; }
-    .version-value { font-size: 1.2rem; font-weight: 700; }
-
-    .back-link {
-      display: block; text-align: center;
-      color: #6b7280; text-decoration: none;
-      font-size: 0.9rem; padding: 16px;
-      transition: 0.2s;
+    .feat:hover { transform: translateY(-4px); border-color: rgba(234,179,8,0.45); box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(234,179,8,0.1); }
+    .feat-ic {
+      width: 48px; height: 48px; border-radius: 15px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 14px;
+      background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3);
     }
-    .back-link:hover { color: #fff; }
+    .feat h3 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+    .feat p { font-size: 0.85rem; color: var(--dim); line-height: 1.6; }
 
+    /* STEPS + PWA */
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 24px; padding: 28px; backdrop-filter: blur(14px); }
+    .panel h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 16px; display: flex; gap: 10px; align-items: center; }
+    .step { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.88rem; color: #d4d4d8; line-height: 1.55; }
+    .step:last-child { border-bottom: none; }
+    .step n {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.82rem; color: #1a1205;
+      background: linear-gradient(135deg, #fef08a, var(--gold));
+      box-shadow: 0 4px 18px rgba(234,179,8,0.35);
+    }
+    .panel p.dim { color: var(--dim); font-size: 0.88rem; line-height: 1.65; margin-bottom: 16px; }
+    .link-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; align-items: center; }
+    footer p { font-size: 0.8rem; color: var(--faint); }
+    footer a { color: var(--gold-soft); text-decoration: none; font-size: 0.82rem; font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .two { grid-template-columns: 1fr; }
+      .hero-card { padding: 32px 24px; }
+    }
     @media (max-width: 480px) {
-      .container { padding: 20px 16px; }
-      .hero-card { padding: 32px 20px; }
-      .download-btn-main { padding: 16px 32px; font-size: 1rem; }
-      .features-grid { grid-template-columns: 1fr 1fr; }
+      .grid { grid-template-columns: 1fr; }
+      .btn-gold { width: 100%; justify-content: center; }
+      .nav-links .btn-ghost:last-child { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <div class="logo">XOLERIC</div>
-      <div class="subtitle">So'z Ustasi - mobil ilova</div>
-    </div>
+  <div class="top-line"></div>
+  <div class="wrap">
 
-    <div class="hero-card">
-      <div class="hero-content">
-        <div class="hero-icon">📲</div>
-        <h1 class="hero-title">Android ilovasini yuklab oling</h1>
-        <p class="hero-desc">To'liq offline, tezkor va qulay. O'zbek tilini o'rganishning eng zamonaviy usuli.</p>
-        <a href="https://github.com/Xolericuz/Savodhon/releases/download/v2.2.0/XOLERIC-v2.2.0.apk" class="download-btn-main" download>
-          ⬇ Yuklab olish
-        </a>
-        <div class="file-info">APK • ~50 KB • v2.2.0 • Android 5.0+</div>
+    <nav class="nav">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">X</span>
+        <span>
+          <span class="brand-name">SAVODHON</span><br>
+          <span class="brand-sub">So'z Ustasi — premium ta'lim</span>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="btn-ghost" href="./index.html">Ilovani ochish</a>
+        <a class="btn-ghost" href="https://github.com/Xolericuz/Savodhon/releases/latest">GitHub Release</a>
       </div>
-    </div>
+    </nav>
 
-    <div class="version-info">
-      <div class="version-item">
-        <div class="version-label">Versiya</div>
-        <div class="version-value">2.2.0</div>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-inner">
+          <span class="pill"><span class="dot"></span> Premium bank-uslubi • v2.2.0</span>
+          <h1>O'zbek tilini <span class="gold">bo'g'inlab</span> o'rganing</h1>
+          <p class="lede">Savodhon — So'z Ustasi: Bo'g'in treneri, o'yinlashtirilgan darajalar, kunlik challenge va to'liq offline PWA. Bitta APK — telefonda ham, brauzerda ham ishlaydi.</p>
+          <div class="cta-row">
+            <a class="btn-gold" href="https://github.com/Xolericuz/Savodhon/releases/download/v2.2.0/XOLERIC-v2.2.0.apk" download>⬇ APK ni yuklab olish</a>
+            <a class="btn-ghost" href="./index.html">🌐 Ilovani ochish</a>
+          </div>
+          <div class="file-meta">
+            <span>APK</span><span class="sep">•</span>
+            <span>~50 KB</span><span class="sep">•</span>
+            <span>v2.2.0</span><span class="sep">•</span>
+            <span>Android 5.0+</span><span class="sep">•</span>
+            <span>Offline ishlaydi</span>
+          </div>
+          <div class="trust">
+            <div class="trust-item">⭐ <span><b>1000+ so'z</b> bazasi</span></div>
+            <div class="trust-item">🔤 <span><b>28 harf</b> treneri</span></div>
+            <div class="trust-item">📴 <span><b>Internet</b> shart emas</span></div>
+          </div>
+        </div>
       </div>
-      <div class="version-item">
-        <div class="version-label">Hajmi</div>
-        <div class="version-value">~50 KB</div>
-      </div>
-      <div class="version-item">
-        <div class="version-label">Android</div>
-        <div class="version-value">5.0+</div>
-      </div>
-      <div class="version-item">
-        <div class="version-label">So'ngi yangilanish</div>
-        <div class="version-value">May 2026</div>
-      </div>
-    </div>
 
-    <div class="pwa-section">
-      <p>🌐 Brauzerda ishlatish uchun PWA versiyasidan foydalaning</p>
-      <a href="index.html" class="pwa-btn">🌐 Ilovani ochish</a>
-    </div>
+      <div class="mock-side" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="mock-top">
+              <span class="mock-streak">🔥 12</span>
+              <span class="mock-xp">⭐ 1 250 XP</span>
+            </div>
+            <div class="mock-bar"><em></em></div>
+            <div class="mock-word">KI<span>TO</span>B</div>
+            <div class="mock-tiles">
+              <i class="ok">K</i><i class="ok">I</i><i class="on">T</i><i class="on">O</i><i>B</i>
+              <i>A</i><i class="on">O</i><i>N</i><i>L</i><i>R</i>
+            </div>
+            <div class="mock-btn">Davom etish →</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="pwa-section" style="border-color: rgba(251,191,36,0.15); background: rgba(251,191,36,0.03);">
-      <p>⚠️ APK yuklanmasa yoki ishlamasa, GitHub Release sahifasidan yuklab oling</p>
-      <a href="https://github.com/Xolericuz/Savodhon/releases/latest" class="pwa-btn">📦 GitHub Release</a>
-    </div>
+    <section class="stats">
+      <div class="stat"><b>30</b><span>harf treneri</span></div>
+      <div class="stat"><b>1000+</b><span>so'z bazasi</span></div>
+      <div class="stat"><b>~50 KB</b><span>APK hajmi</span></div>
+      <div class="stat"><b>100%</b><span>offline PWA</span></div>
+    </section>
 
-    <h2 style="font-size:1.3rem;margin-bottom:16px;display:flex;align-items:center;gap:8px">⭐ Imkoniyatlar</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🔤</div>
-        <div class="feature-name">29 ta harf</div>
-        <div class="feature-desc">O'zbek alifbosidagi barcha harflar</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📖</div>
-        <div class="feature-name">600+ so'z</div>
-        <div class="feature-desc">6 bosqich, har bir harf uchun</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌍</div>
-        <div class="feature-name">Global rejim</div>
-        <div class="feature-desc">Barcha harflarni aralash o'rganing</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔄</div>
-        <div class="feature-name">Aqlli takrorlash</div>
-        <div class="feature-desc">SRS tizimi bilan mustahkamlash</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏆</div>
-        <div class="feature-name">O'yinlashtirish</div>
-        <div class="feature-desc">Darajalar, yutuqlar, streak</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <div class="feature-name">Statistika</div>
-        <div class="feature-desc">Batafsil chartlar va hisobot</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎨</div>
-        <div class="feature-name">4 xil mavzu</div>
-        <div class="feature-desc">Dark, Light, Neon, Ocean</div>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📴</div>
-        <div class="feature-name">Offline</div>
-        <div class="feature-desc">Internet kerak emas</div>
+    <div class="section-head">
+      <div>
+        <h2>⭐ Nega Savodhon?</h2>
+        <p>Bank-ilovalar darajasidagi ishonch, tezlik va dizayn — ta'lim uchun.</p>
       </div>
     </div>
 
-    <div class="steps">
-      <h2>📥 O'rnatish</h2>
-      <div class="step-item">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>Yuklab oling</strong> — yuqoridagi "Yuklab olish" tugmasini bosing</div>
+    <section class="grid">
+      <div class="feat">
+        <div class="feat-ic">🔤</div>
+        <h3>Bo'g'in treneri</h3>
+        <p>Har bir so'z bo'g'inlarga bo'linadi. Ko'z-ko'rinmas xatolar darhol belgilanadi, to'g'ri talaffuz mustahkamlanadi.</p>
       </div>
-      <div class="step-item">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Ruxsat bering</strong> — Sozlamalar → Xavfsizlik → "Noma'lum manbalar" ni yoqing</div>
+      <div class="feat">
+        <div class="feat-ic">🏆</div>
+        <h3>Gamification</h3>
+        <p>XP, streak, darajalar va kunlik challenge. Har kunlik 20 so'zlik maqsad bilan motivatsiya so'nmaydi.</p>
       </div>
-      <div class="step-item">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>O'rnating</strong> — Yuklab olingan APK faylni oching va "O'rnatish" tugmasini bosing</div>
+      <div class="feat">
+        <div class="feat-ic">📴</div>
+        <h3>Offline PWA</h3>
+        <p>Bir marta oching — keyin internetsiz ishlaydi. Service Worker keshi bilan tez va barqaror.</p>
       </div>
-      <div class="step-item">
-        <div class="step-num">4</div>
-        <div class="step-text"><strong>Boshlang</strong> — Ilova ochiladi va darhol o'rganishni boshlashingiz mumkin</div>
+      <div class="feat">
+        <div class="feat-ic">📚</div>
+        <h3>28 harf • 1000+ so'z</h3>
+        <p>O'zbek alifbosining barcha harflari va 1000 dan ortiq saralangan so'z — 6 bosqichli tizimda.</p>
       </div>
-    </div>
+    </section>
 
-    <a href="index.html" class="back-link">← Ilovaga qaytish</a>
+    <section class="two">
+      <div class="panel">
+        <h3>📥 O'rnatish — 4 qadam</h3>
+        <div class="step"><n>1</n><span><b>Yuklab oling</b> — yuqoridagi oltin tugma orqali APK faylni oling.</span></div>
+        <div class="step"><n>2</n><span><b>Ruxsat bering</b> — Sozlamalar → Xavfsizlik → «Noma'lum manbalar» ni yoqing.</span></div>
+        <div class="step"><n>3</n><span><b>O'rnating</b> — APK faylni oching va «O'rnatish» ni bosing.</span></div>
+        <div class="step"><n>4</n><span><b>Boshlang</b> — Ismingizni kiriting va birinchi bo'g'inni yozing.</span></div>
+      </div>
+      <div class="panel">
+        <h3>🌐 Brauzerda ishlatish</h3>
+        <p class="dim">APK o'rnatish shart emas. PWA versiya brauzerda to'liq ishlaydi va «Add to Home Screen» orqali ilova kabi o'rnatiladi.</p>
+        <div class="link-row">
+          <a class="btn-gold" style="padding:14px 30px;font-size:0.95rem" href="./index.html">Ilovani ochish</a>
+          <a class="btn-ghost" href="https://github.com/Xolericuz/Savodhon/releases/latest">📦 GitHub Release</a>
+        </div>
+        <p class="dim" style="margin-top:16px;margin-bottom:0">APK yuklanmasa — GitHub Release sahifasidan so'nggi versiyani oling.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Savodhon — So'z Ustasi. Barcha huquqlar himoyalangan.</p>
+      <div style="display:flex;gap:18px">
+        <a href="./index.html">Ilovani ochish</a>
+        <a href="https://github.com/Xolericuz/Savodhon">GitHub</a>
+      </div>
+    </footer>
+
   </div>
 </body>
 </html>
