@@ -657,7 +657,7 @@ button,.btn-gold,.btn-ghost,.f-btn,.qa,.mode-row,.letter-btn,.letter-tile,.nav-b
   const x=c.getContext('2d');
   const GOLD=['#F5C044','#EAB308','#FFE9A8','#3B6CFF','#ffffff'];
   let W,H,parts=[],confetti=[];
-  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  function resize(){const d=Math.min(window.devicePixelRatio||1,1.5);W=c.width=Math.round(window.innerWidth*d);H=c.height=Math.round(window.innerHeight*d);}
   resize();window.addEventListener('resize',resize);
   const dark=document.documentElement.getAttribute('data-theme')!=='light';
   for(let i=0;i<46;i++)parts.push({x:Math.random()*2000,y:Math.random()*2000,r:Math.random()*1.8+.4,s:Math.random()*.35+.08,o:Math.random()*.5+.15,g:Math.random()>.55});
@@ -666,6 +666,7 @@ button,.btn-gold,.btn-ghost,.f-btn,.qa,.mode-row,.letter-btn,.letter-tile,.nav-b
     for(let i=0;i<n;i++)confetti.push({x:W/2+(Math.random()-.5)*120,y:H*.32,r:Math.random()*4+2,vx:(Math.random()-.5)*7,vy:Math.random()*-6-2,g:.22+Math.random()*.12,col:GOLD[Math.floor(Math.random()*GOLD.length)],life:1,spin:Math.random()*Math.PI*2});
   };
   function animate(){
+    if(document.hidden){requestAnimationFrame(animate);return;}
     x.clearRect(0,0,W,H);
     for(const p of parts){p.y-=p.s;if(p.y<-4){p.y=H+4;p.x=Math.random()*W;}
       x.globalAlpha=p.o;x.fillStyle=p.g?'#F5C044':'#3B6CFF';x.beginPath();x.arc(p.x%W,p.y,p.r,0,7);x.fill();}
@@ -1699,7 +1700,7 @@ function onCorrect(variant){
   dom.mirrorInput.classList.add('correct');
   const wrap=document.getElementById('gameInputWrapper');if(wrap)wrap.classList.add('success-neon-glow');
   dom.cursor.style.display='none';
-  if(variant==='old'){const ns=currentWordData.word.replace(/-/g,'');dom.feedbackMsg.innerHTML='Ajoyib! 🎉<br><small style="color:#F5C044;font-weight:700">Eski harf qabul qilindi — yangi imlo: <b>'+ns+'</b></small>';}else if(variant==='new'&&/[şçöğ]/.test(target)){dom.feedbackMsg.innerHTML='Ajoyib! 🎉<br><small style="color:#2ED573;font-weight:700">Yangi harfdan foydalanildi ✅</small>';}else{dom.feedbackMsg.textContent='Ajoyib! 🎉';}dom.feedbackMsg.classList.add('show','success');
+  if(variant==='old'){const ns=currentWordData.word.replace(/-/g,'');dom.feedbackMsg.innerHTML='Ajoyib! 🎉<br><small style="color:#F5C044;font-weight:700">Eski harf qabul qilindi — yangi imlo: <b>'+ns+'</b></small>';}else if(variant==='new'&&/[şçöğ]/.test(currentWordData.clean)){dom.feedbackMsg.innerHTML='Ajoyib! 🎉<br><small style="color:#2ED573;font-weight:700">Yangi harfdan foydalanildi ✅</small>';}else{dom.feedbackMsg.textContent='Ajoyib! 🎉';}dom.feedbackMsg.classList.add('show','success');
   dom.xpPopup.style.display='inline-block';
   setTimeout(()=>{dom.xpPopup.style.display='none';},2000);
   dom.nextBtn.classList.add('visible');
