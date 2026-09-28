@@ -25,7 +25,7 @@ class ReviewScreen extends StatelessWidget {
             child: Text(
                 'Aqlli navbat: muddati o‘tgan → kuchsiz → yangi.\nHozir: ${q.length} so‘z tayyor.',
                 style:
-                    TextStyle(color: Colors.white.withOpacity(0.75), height: 1.6)),
+                    TextStyle(color: Colors.white.withValues(alpha: 0.75), height: 1.6)),
           ),
           const SizedBox(height: 12),
           Row(children: [

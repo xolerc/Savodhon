@@ -70,7 +70,7 @@ class _LoaderScreenState extends State<LoaderScreen>
                   ]),
                   boxShadow: [
                     BoxShadow(
-                        color: AppTheme.gold.withOpacity(0.5),
+                        color: AppTheme.gold.withValues(alpha: 0.5),
                         blurRadius: 44,
                         spreadRadius: 2),
                   ],
@@ -88,7 +88,7 @@ class _LoaderScreenState extends State<LoaderScreen>
             const SizedBox(height: 6),
             Text('XOLERIC • So‘z Ustasi',
                 style: TextStyle(
-                    color: Colors.white.withOpacity(0.55),
+                    color: Colors.white.withValues(alpha: 0.55),
                     letterSpacing: 3,
                     fontSize: 11,
                     fontWeight: FontWeight.w600)),
@@ -97,11 +97,11 @@ class _LoaderScreenState extends State<LoaderScreen>
               width: 42,
               height: 42,
               child: CircularProgressIndicator(
-                  color: AppTheme.gold.withOpacity(0.9), strokeWidth: 3),
+                  color: AppTheme.gold.withValues(alpha: 0.9), strokeWidth: 3),
             ),
             const SizedBox(height: 14),
             Text(_status,
-                style: TextStyle(color: Colors.white.withOpacity(0.6))),
+                style: TextStyle(color: Colors.white.withValues(alpha: 0.6))),
           ],
         ),
       ),

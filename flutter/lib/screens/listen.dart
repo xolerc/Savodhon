@@ -75,8 +75,10 @@ class _ListenScreenState extends State<ListenScreen> {
           });
           if (r.finalResult) setState(() => listening = false);
         },
-        localeId: 'uz-UZ',
-        listenFor: const Duration(seconds: 15),
+        listenOptions: SpeechListenOptions(
+          localeId: 'uz-UZ',
+          listenFor: const Duration(seconds: 15),
+        ),
       );
     } catch (_) {
       if (!mounted) return;
@@ -156,7 +158,7 @@ class _ListenScreenState extends State<ListenScreen> {
                 if (en.isNotEmpty)
                   Text(en,
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.45),
+                          color: Colors.white.withValues(alpha: 0.45),
                           fontStyle: FontStyle.italic)),
                 const SizedBox(height: 10),
                 OutlinedButton.icon(
@@ -179,12 +181,12 @@ class _ListenScreenState extends State<ListenScreen> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: listening
-                        ? Colors.red.withOpacity(0.85)
+                        ? Colors.red.withValues(alpha: 0.85)
                         : AppTheme.gold,
                     boxShadow: [
                       BoxShadow(
                           color: (listening ? Colors.red : AppTheme.gold)
-                              .withOpacity(0.5),
+                              .withValues(alpha: 0.5),
                           blurRadius: 30),
                     ],
                   ),
@@ -199,7 +201,7 @@ class _ListenScreenState extends State<ListenScreen> {
                 child: Text(
                     listening ? 'Tinglanmoqda... gapiring!' : 'Mikrofonni bosing',
                     style: TextStyle(
-                        color: Colors.white.withOpacity(0.6)))),
+                        color: Colors.white.withValues(alpha: 0.6)))),
             if (heard.isNotEmpty) ...[
               const SizedBox(height: 12),
               GlassCard(
@@ -221,7 +223,7 @@ class _ListenScreenState extends State<ListenScreen> {
                   if (notice != null)
                     Text(notice!,
                         style: TextStyle(
-                            color: Colors.white.withOpacity(0.65))),
+                            color: Colors.white.withValues(alpha: 0.65))),
                 ],
               ])),
               const SizedBox(height: 10),
@@ -232,7 +234,7 @@ class _ListenScreenState extends State<ListenScreen> {
               onPressed: () => setState(() => noMicMode = true),
               child: Text('Mikrofon ishlamasa — o‘z-o‘zini baholash',
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.55))),
+                      color: Colors.white.withValues(alpha: 0.55))),
             ),
           ] else ...[
             GlassCard(

@@ -59,7 +59,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ]),
                   boxShadow: [
                     BoxShadow(
-                        color: AppTheme.gold.withOpacity(0.45),
+                        color: AppTheme.gold.withValues(alpha: 0.45),
                         blurRadius: 50,
                         spreadRadius: 2),
                   ],
@@ -76,7 +76,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 'Savodhon — o‘zbekcha savodxonlik ustasi.\n28 harf • 6 bosqich • 1008 so‘z',
                 textAlign: TextAlign.center,
                 style:
-                    TextStyle(color: Colors.white.withOpacity(0.65), height: 1.5),
+                    TextStyle(color: Colors.white.withValues(alpha: 0.65), height: 1.5),
               ),
             ),
             const SizedBox(height: 28),
@@ -106,7 +106,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 hintText: 'Masalan: Jasur',
                 errorText: _err,
                 filled: true,
-                fillColor: Colors.white.withOpacity(0.06),
+                fillColor: Colors.white.withValues(alpha: 0.06),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: BorderSide.none),

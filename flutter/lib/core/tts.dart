@@ -64,12 +64,12 @@ class SyllableChips extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
               color: i == active
-                  ? activeColor.withOpacity(0.28)
-                  : Colors.white.withOpacity(0.06),
+                  ? activeColor.withValues(alpha: 0.28)
+                  : Colors.white.withValues(alpha: 0.06),
               border: Border.all(
                   color: i == active
                       ? activeColor
-                      : Colors.white.withOpacity(0.14),
+                      : Colors.white.withValues(alpha: 0.14),
                   width: i == active ? 1.6 : 1),
             ),
             child: Text(parts[i],
@@ -78,7 +78,7 @@ class SyllableChips extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                     color: i == active
                         ? Colors.white
-                        : Colors.white.withOpacity(0.85))),
+                        : Colors.white.withValues(alpha: 0.85))),
           ),
       ],
     );

@@ -67,7 +67,7 @@ jobs:
           path: apk/Savodhon-v3.0.apk
 
       - name: Create Release
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v3')
         run: |
           gh release create "${{ github.ref_name }}" \
             --title "Savodhon ${{ github.ref_name }}" \

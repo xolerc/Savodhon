@@ -54,7 +54,7 @@ class AlphabetScreen extends StatelessWidget {
                             color: AppTheme.gold)),
                     Text('${(p * 100).round()}%',
                         style: TextStyle(
-                            color: Colors.white.withOpacity(0.6),
+                            color: Colors.white.withValues(alpha: 0.6),
                             fontWeight: FontWeight.w700)),
                   ],
                 ),
@@ -64,7 +64,7 @@ class AlphabetScreen extends StatelessWidget {
                   child: LinearProgressIndicator(
                     value: p,
                     minHeight: 8,
-                    backgroundColor: Colors.white.withOpacity(0.08),
+                    backgroundColor: Colors.white.withValues(alpha: 0.08),
                     valueColor:
                         const AlwaysStoppedAnimation(AppTheme.neon),
                   ),
@@ -72,7 +72,7 @@ class AlphabetScreen extends StatelessWidget {
                 const SizedBox(height: 6),
                 Text('36 so‘z • 6 bosqich',
                     style: TextStyle(
-                        color: Colors.white.withOpacity(0.5), fontSize: 12)),
+                        color: Colors.white.withValues(alpha: 0.5), fontSize: 12)),
               ],
             ),
           );

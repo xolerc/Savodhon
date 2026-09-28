@@ -95,7 +95,7 @@ class _FocusScreenState extends State<FocusScreen> {
             child: LinearProgressIndicator(
               value: (idx + 1) / widget.queue.length,
               minHeight: 8,
-              backgroundColor: Colors.white.withOpacity(0.08),
+              backgroundColor: Colors.white.withValues(alpha: 0.08),
               valueColor: const AlwaysStoppedAnimation(AppTheme.gold),
             ),
           ),
@@ -106,7 +106,7 @@ class _FocusScreenState extends State<FocusScreen> {
               children: [
                 Text('${cur.letter} • ${stepName(cur.step)}',
                     style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
+                        color: Colors.white.withValues(alpha: 0.6),
                         fontWeight: FontWeight.w700)),
                 const SizedBox(height: 8),
                 Text(emoji, style: const TextStyle(fontSize: 84)),
@@ -119,14 +119,14 @@ class _FocusScreenState extends State<FocusScreen> {
                 if (en.isNotEmpty)
                   Text(en,
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.45),
+                          color: Colors.white.withValues(alpha: 0.45),
                           fontSize: 15,
                           fontStyle: FontStyle.italic)),
                 if (notice != null) ...[
                   const SizedBox(height: 6),
                   Text('🔄 Eski/yangi imlo bir xil qabul qilinadi',
                       style: TextStyle(
-                          color: AppTheme.neon.withOpacity(0.85),
+                          color: AppTheme.neon.withValues(alpha: 0.85),
                           fontSize: 12)),
                 ],
               ],

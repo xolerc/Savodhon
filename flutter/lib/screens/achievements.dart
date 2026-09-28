@@ -64,7 +64,7 @@ class AchievementsScreen extends StatelessWidget {
                           fontWeight: FontWeight.w900, fontSize: 20)),
                   Text('Davom eting — har kun +XP!',
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.6))),
+                          color: Colors.white.withValues(alpha: 0.6))),
                 ])),
           ]),
         ),

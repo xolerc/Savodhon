@@ -31,11 +31,11 @@ class AppTheme {
             fontSize: 20, fontWeight: FontWeight.w800, color: text),
       ),
       cardTheme: CardThemeData(
-        color: card.withOpacity(0.72),
+        color: card.withValues(alpha: 0.72),
         elevation: 0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(color: Colors.white.withOpacity(0.09)),
+          side: BorderSide(color: Colors.white.withValues(alpha: 0.09)),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -53,13 +53,13 @@ class AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: text,
           minimumSize: const Size(48, 52),
-          side: BorderSide(color: Colors.white.withOpacity(0.16)),
+          side: BorderSide(color: Colors.white.withValues(alpha: 0.16)),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: bg2.withOpacity(0.92),
+        backgroundColor: bg2.withValues(alpha: 0.92),
         selectedItemColor: gold,
         unselectedItemColor: muted,
         type: BottomNavigationBarType.fixed,
@@ -99,19 +99,19 @@ class GlassCard extends StatelessWidget {
     final card = Container(
       padding: padding,
       decoration: BoxDecoration(
-        color: const Color(0xFF101018).withOpacity(0.72),
+        color: const Color(0xFF101018).withValues(alpha: 0.72),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white.withOpacity(0.09)),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.09)),
         boxShadow: glow
             ? [
                 BoxShadow(
-                    color: AppTheme.gold.withOpacity(0.28),
+                    color: AppTheme.gold.withValues(alpha: 0.28),
                     blurRadius: 28,
                     spreadRadius: 1),
               ]
             : [
                 BoxShadow(
-                    color: Colors.black.withOpacity(0.45), blurRadius: 18),
+                    color: Colors.black.withValues(alpha: 0.45), blurRadius: 18),
               ],
       ),
       child: child,

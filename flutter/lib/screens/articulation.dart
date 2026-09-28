@@ -45,11 +45,11 @@ class _ArticulationScreenState extends State<ArticulationScreen> {
                       borderRadius: BorderRadius.circular(14),
                       color: sel
                           ? AppTheme.gold
-                          : Colors.white.withOpacity(0.06),
+                          : Colors.white.withValues(alpha: 0.06),
                       border: Border.all(
                           color: sel
                               ? AppTheme.gold
-                              : Colors.white.withOpacity(0.12)),
+                              : Colors.white.withValues(alpha: 0.12)),
                     ),
                     child: Center(
                         child: Text(l,
@@ -93,7 +93,7 @@ class _ArticulationScreenState extends State<ArticulationScreen> {
                                     '${visualFor(a.example, selected)}  Misol: ${a.example}',
                                     style: TextStyle(
                                         color: Colors.white
-                                            .withOpacity(0.6))),
+                                            .withValues(alpha: 0.6))),
                               ],
                             ),
                           ),

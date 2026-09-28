@@ -34,7 +34,7 @@ class DashboardScreen extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text('Bugun ham bir qadam oldinga.',
                       style: TextStyle(
-                          color: Colors.white.withOpacity(0.55), fontSize: 13)),
+                          color: Colors.white.withValues(alpha: 0.55), fontSize: 13)),
                 ],
               ),
             ),
@@ -42,9 +42,9 @@ class DashboardScreen extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               decoration: BoxDecoration(
-                color: Colors.orange.withOpacity(0.14),
+                color: Colors.orange.withValues(alpha: 0.14),
                 borderRadius: BorderRadius.circular(14),
-                border: Border.all(color: Colors.orange.withOpacity(0.4)),
+                border: Border.all(color: Colors.orange.withValues(alpha: 0.4)),
               ),
               child: Text('🔥 ${store.streak} kun',
                   style: const TextStyle(
@@ -67,7 +67,7 @@ class DashboardScreen extends StatelessWidget {
                           letterSpacing: 2,
                           fontSize: 11,
                           fontWeight: FontWeight.w700,
-                          color: Colors.white.withOpacity(0.55))),
+                          color: Colors.white.withValues(alpha: 0.55))),
                   const Text('💰', style: TextStyle(fontSize: 22)),
                 ],
               ),
@@ -83,14 +83,14 @@ class DashboardScreen extends StatelessWidget {
                 child: LinearProgressIndicator(
                   value: pct,
                   minHeight: 10,
-                  backgroundColor: Colors.white.withOpacity(0.08),
+                  backgroundColor: Colors.white.withValues(alpha: 0.08),
                   valueColor: const AlwaysStoppedAnimation(AppTheme.neon),
                 ),
               ),
               const SizedBox(height: 8),
               Text('Kunlik maqsad: $done / $goal so‘z (${(pct * 100).round()}%)',
                   style: TextStyle(
-                      color: Colors.white.withOpacity(0.7), fontSize: 13)),
+                      color: Colors.white.withValues(alpha: 0.7), fontSize: 13)),
             ],
           ),
         ),

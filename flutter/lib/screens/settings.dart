@@ -78,21 +78,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
             children: [
               const Text('🎨 Mavzu',
                   style: TextStyle(fontWeight: FontWeight.w800)),
-              RadioListTile<int>(
-                value: 0,
+              RadioGroup<int>(
                 groupValue: s.themeMode,
-                activeColor: AppTheme.gold,
-                title: const Text('Midnight Premium (tungi)',
-                    style: TextStyle(color: Colors.white)),
                 onChanged: (v) => s.setThemeMode(v ?? 0),
-              ),
-              RadioListTile<int>(
-                value: 1,
-                groupValue: s.themeMode,
-                activeColor: AppTheme.gold,
-                title: const Text('Yorug‘ (kunduzgi)',
-                    style: TextStyle(color: Colors.white)),
-                onChanged: (v) => s.setThemeMode(v ?? 0),
+                child: const Column(
+                  children: [
+                    Row(
+                      children: [
+                        Radio<int>(value: 0, activeColor: AppTheme.gold),
+                        Text('Midnight Premium (tungi)',
+                            style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Radio<int>(value: 1, activeColor: AppTheme.gold),
+                        Text('Yorug‘ (kunduzgi)',
+                            style: TextStyle(color: Colors.white)),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -201,7 +207,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 decoration: InputDecoration(
                   hintText: 'JSON ni bu yerga joylashtiring...',
                   filled: true,
-                  fillColor: Colors.white.withOpacity(0.06),
+                  fillColor: Colors.white.withValues(alpha: 0.06),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide.none),
@@ -254,7 +260,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         Center(
           child: Text('Savodhon 1.0.0 • XOLERIC',
               style:
-                  TextStyle(color: Colors.white.withOpacity(0.4), fontSize: 12)),
+                  TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 12)),
         ),
       ],
     );
