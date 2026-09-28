@@ -545,7 +545,18 @@ button,.btn-gold,.btn-ghost,.f-btn,.qa,.mode-row,.letter-btn,.letter-tile,.nav-b
   <div class="set-row"><span>🎯 Kunlik maqsad (so'z)</span><select id="goalSelect" onchange="changeGoal(this.value)"></select></div>
   <button class="set-row" onclick="closeModal('settingsModal');openModal('shortcutsModal')"><span>⌨️ Klaviatura yorliqlari</span><span>→</span></button>
   <button class="set-row" onclick="requestFullscreen()"><span>📱 To'liq ekran</span><span>→</span></button>
+  <button class="set-row" onclick="closeModal('settingsModal');openModal('aboutModal')"><span>ℹ️ Ilova haqida</span><span>→</span></button>
   <button class="btn-ghost" onclick="closeModal('settingsModal')">Yopish</button>
+</div></div>
+
+<!-- about modal -->
+<div class="modal-overlay" id="aboutModal"><div class="modal" style="text-align:center">
+  <div style="font-size:44px;line-height:1">📖</div>
+  <h3 style="margin:10px 0 2px">Savodhon — So'z Ustasi</h3>
+  <div style="color:var(--gold);font-weight:800;font-size:13px">v3 • 2026 alifbo (28 harf, 1008 so'z)</div>
+  <p style="color:var(--dim);font-size:13px;line-height:1.6;margin:12px 0">Bo'g'inlab o'qish trenajeri: vizual lug'at, SM-2 takrorlash, artikulatsiya va aqlli mashq bilan.</p>
+  <div style="font-size:14px">👨‍💻 Muallif: <b>Xoleric</b></div>
+  <button class="btn-ghost" onclick="closeModal('aboutModal')" style="margin-top:14px">Yopish</button>
 </div></div>
 
 <!-- profile modal -->
