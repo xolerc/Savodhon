@@ -226,10 +226,11 @@ class _ListenScreenState extends State<ListenScreen> {
                             color: Colors.white.withValues(alpha: 0.65))),
                 ],
               ])),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                  onPressed: _next, child: const Text('Keyingi so‘z →')),
             ],
+            const SizedBox(height: 10),
+            // Har doim ko'rinadi: nutq tanilmasa ham foydalanuvchi oldinga o'ta oladi
+            ElevatedButton(
+                onPressed: _next, child: const Text('Keyingi so‘z →')),
             TextButton(
               onPressed: () => setState(() => noMicMode = true),
               child: Text('Mikrofon ishlamasa — o‘z-o‘zini baholash',
