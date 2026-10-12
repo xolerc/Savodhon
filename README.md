@@ -1,40 +1,36 @@
-# XOLERIC — So'z Ustasi (Savodhon)
+# Savodhon — So'z Ustasi | XOLERIC
 
-Interactive **Progressive Web App (PWA)** for learning the Uzbek language through syllable-by-syllable reading. Features full gamification with levels, XP, streaks, achievements, daily challenges, multiple themes, and a built-in syllable trainer.
+> O'zbek tilidagi so'zlarni bo'g'inlab o'rganish uchun premium interaktiv ilova — 28 harf, 1000+ so'z, oflayn PWA + Flutter.
 
-## Features
+## 🔴 Jonli demo
+**https://xolerc.github.io/Savodhon/**
 
-- **Syllable-by-Syllable Reading** — Break down Uzbek words into syllables for phonetic learning
-- **Gamification System** — Levels, experience points (XP), streaks, leaderboard
-- **Achievements** — Unlockable badges for milestones
-- **Daily Challenges** — New exercises every day
-- **Multiple Themes** — Dark, Light, Neon, Ocean themes
-- **PWA Support** — Installable on mobile devices, works offline
-- **Android APK** — Native Android build via `build-apk.sh`
-- **Multiple Game Modes** — Syllable trainer, word builder, quick challenges
-- **Progress Tracking** — localStorage-based persistence
+## 📱 APK (Android)
+`Releases` bo'limidan eng so'nggi APK ni yuklab oling — shuningdek, `download.html` sahifasida QR kod bor.
 
-## Tech Stack
+## ✨ Imkoniyatlar
+- **Bo'g'inlab o'qish** — so'zlar bo'g'inlarga ajratib o'rgatiladi
+- **Gamifikatsiya** — daraja, XP, streak, yutuqlar, kunlik chaqiriqlar
+- **4 mavzu** — Dark, Light, Neon, Ocean
+- **PWA** — telefonga o'rnatiladi, oflaynsiz ishlaydi
+- **O'yin rejimlari** — bo'g'in treneri, so'z yig'ish, tezkor testlar
 
-- HTML5, CSS3 (CSS custom properties, glassmorphism, animations)
-- Vanilla JavaScript
-- PWA (Service Worker + Manifest)
-- Google Fonts (Inter)
-- Android WebView (for APK build)
+## 🛠️ Texnologiyalar
+HTML5, CSS3, JavaScript (`assets/` ga ajratilgan), PWA (Service Worker + Manifest), Flutter (APK, `flutter/` papkasi)
 
-## How to Run
-
+## ▶️ Lokal ishga tushirish
 ```bash
-# Serve locally:
+cd Savodhon
 python3 -m http.server 8080
-# Open http://localhost:8080
-
-# Build Android APK:
-bash build-apk.sh
+# http://localhost:8080
 ```
 
-The app is fully client-side. Open `index.html` in any modern browser.
+## 🔗 Rasmiy portfolio
+Barcha XOLERIC loyihalari: **https://xolerc.github.io/mydrime/**
 
-## PWA Installation
+## 👤 Muallif
+**XOLERIC** — https://github.com/xolerc · Instagram: https://www.instagram.com/ixoleric · YouTube: https://youtube.com/@xoleric
 
-On Android/iOS, open the app in Chrome/Safari and select **"Add to Home Screen"** for an app-like experience.
+---
+
+*Savodhon — Word Master: interactive PWA + Flutter app for learning Uzbek through syllable-by-syllable reading, with levels, XP, streaks and offline support. Live demo above. By XOLERIC.*
